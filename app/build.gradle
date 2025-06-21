@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.letstalk"
-        minSdk 17
+        minSdk 27
         targetSdk 35
         versionCode 1
         versionName "1.0"
