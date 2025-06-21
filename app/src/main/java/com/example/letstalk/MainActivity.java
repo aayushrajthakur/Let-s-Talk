@@ -26,7 +26,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     EditText userid;
-    EditText username;
     Button loginBtn;
 
     @Override
@@ -35,19 +34,17 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         userid = findViewById(R.id.userId);
-        username = findViewById(R.id.userName);
         loginBtn = findViewById(R.id.loginBtn);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String userId = userid.getText().toString();
-                String userName = username.getText().toString();
-                if (userId.isEmpty() || userName.isEmpty()) {
+                if (userId.isEmpty()) {
                     return;
                 }
 
-                startService(userId, userName);
+                startService(userId);
                 Intent intent = new Intent(MainActivity.this, CallingActivity.class);
                 intent.putExtra("userId", userId);
                 startActivity(intent);
@@ -71,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void startService(String userId, String username) {
+    void startService(String userId) {
         Application application = getApplication(); // Android's application context
         long appID = 1177907768;   // yourAppID
         String appSign ="fc9caf4c58c546df196e72772df5bd4891726bca12997fc72e6612d4dcf18d77";  // yourAppSign
         String userID = userId; // yourUserID, userID should only contain numbers, English characters, and '_'.
-        String userName = username;   // yourUserName
+        String userName = userId;   // yourUserName
 
         ZegoUIKitPrebuiltCallInvitationConfig callInvitationConfig = new ZegoUIKitPrebuiltCallInvitationConfig();
 
