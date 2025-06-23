@@ -3,6 +3,7 @@ package com.example.letstalk;
 import android.Manifest;
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
         userid = findViewById(R.id.userId);
         loginBtn = findViewById(R.id.loginBtn);
 
+        SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+        String storedUserId = prefs.getString("userId", null);
+
+        if (storedUserId != null) {
+            // Session exists, auto-login
+            startService(storedUserId);
+            Intent intent = new Intent(MainActivity.this, CallingActivity.class);
+            intent.putExtra("userId", storedUserId);
+            startActivity(intent);
+            finish(); // Optional: prevent returning to this activity
+        }
+
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 startService(userId);
+                // save userId to SharedPreferences to save session
+                SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+                prefs.edit().putString("userId", userId).apply();
+
                 Intent intent = new Intent(MainActivity.this, CallingActivity.class);
                 intent.putExtra("userId", userId);
                 startActivity(intent);

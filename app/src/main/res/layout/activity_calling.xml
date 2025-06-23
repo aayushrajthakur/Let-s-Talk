@@ -63,14 +63,28 @@
             android:layout_marginStart="5dp" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:text="Log out"
+        android:clickable="true"
+        android:textSize="18dp"
+        android:layout_marginTop="230dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        />
+
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Call Health Support"
+        android:id="@+id/healthSupport"
         android:textSize="18dp"
-        android:layout_marginTop="250dp"
+        android:clickable="true"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
         android:textColor="@color/black"
         />
