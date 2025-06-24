@@ -1,95 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#EE1AD6FB"
+    android:background="@drawable/gradient_background"
     tools:context=".CallingActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello User"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:id="@+id/textView"
-        android:textColor="@color/black"
-        android:textSize="30dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Let's Talk"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:textSize="25sp"/>
-
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginHorizontal="10dp"
-        android:gravity="center_vertical"
-        android:padding="10dp">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <EditText
-            android:id="@+id/targetId"
-            android:layout_width="0dp"
+        <!-- Header Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_corner"
-            android:hint="Enter the user id"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColor="#212121"
-            android:textSize="20sp" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp">
 
-        <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
-            android:id="@+id/videoCall_Btn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="5dp" />
+            <!-- App Icon/Logo -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_call_logo"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="Voice Calling App" />
 
-        <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
-            android:id="@+id/voiceCall_Btn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="5dp" />
+            <!-- Welcome Text -->
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello User"
+                android:textColor="#FFFFFF"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium" />
+
+            <!-- App Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Let's Talk"
+                android:textColor="#E8F4FD"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-light" />
+
+        </LinearLayout>
+
+        <!-- User Status Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/userIdText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Connected as Android User"
+                    android:textSize="16sp"
+                    android:textColor="#333333"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ready to make calls"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Call Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Make a Call"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Call Input -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <EditText
+                        android:id="@+id/targetId"
+                        android:layout_width="0dp"
+                        android:layout_height="56dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner"
+                        android:hint="Enter user ID to call"
+                        android:inputType="text"
+                        android:padding="16dp"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="16sp"
+                        android:fontFamily="sans-serif"
+                        android:layout_marginEnd="12dp" />
+
+                    <!-- Voice Call Button -->
+                    <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/voiceCall_Btn"
+                        android:background="@drawable/call_button_background"
+                        android:textSize="25sp"
+                        android:text="📞"
+                        android:padding="10dp"
+                        android:textColor="#FFFFFF"
+                        android:layout_marginEnd="8dp" />
+
+
+
+                    <!-- Video Call Button -->
+                    <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/videoCall_Btn"
+                        android:background="@drawable/call_button_background"
+                        android:textSize="30sp"
+                        android:textColor="#FFFFFF"
+                        android:text="📹"
+                        android:padding="6dp"
+                        android:layout_marginEnd="8dp" />
+
+                </LinearLayout>
+
+                <!-- Call Button -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Online Users"
+                            android:textColor="#333333"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/refreshUsersButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:background="@drawable/refresh_button_background"
+                            android:paddingHorizontal="16dp"
+                            android:text="Refresh"
+                            android:textColor="#667eea"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/onlineUsersContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/users_list_background"
+                        android:minHeight="80dp"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Loading users..."
+                            android:textColor="#666666"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/callButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Make Voice Call"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/primary_button_background"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Online Users Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Quick Actions Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quick Actions"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Health Support Button -->
+                <Button
+                    android:id="@+id/healthSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Call Health Support"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"
+                    android:background="@drawable/health_support_button_background"
+                    android:drawableStart="@drawable/ic_health"
+                    android:drawablePadding="12dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="12dp"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium" />
+
+                <!-- Logout Button -->
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Log out"
+                    android:textSize="16sp"
+                    android:textColor="#666666"
+                    android:background="@drawable/logout_button_background"
+                    android:drawableStart="@drawable/ic_logout"
+                    android:drawablePadding="12dp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif-medium" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/logout"
-        android:text="Log out"
-        android:clickable="true"
-        android:textSize="18dp"
-        android:layout_marginTop="230dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        />
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Call Health Support"
-        android:id="@+id/healthSupport"
-        android:textSize="18dp"
-        android:clickable="true"
-        android:layout_marginTop="50dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        />
-
-
-
-
-</LinearLayout>
+</ScrollView>

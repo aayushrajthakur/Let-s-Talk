@@ -10,9 +10,6 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton;
 import com.zegocloud.uikit.service.defines.ZegoUIKitUser;
@@ -76,7 +73,7 @@ public class CallingActivity extends AppCompatActivity {
         });
 
 
-
+        
     }
 
     void setVoiceCall(String targetUserid){
